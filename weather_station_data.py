@@ -74,11 +74,11 @@ while True:
         wind_start_time = time.time()
         reset_wind()
         while time.time() - wind_start_time <= wind_interval:
-            store_directions.append(wind_direction_byo.get_value())
+            store_directions.append(wind_direction.get_value())
 
         final_speed = calculate_speed(wind_interval)
         store_speeds.append(final_speed)
-    wind_average = wind_direction_byo.get_average(store_directions)
+    wind_average = wind_direction.get_average(store_directions)
     wind_gust = max(store_speeds)
     wind_speed = statistics.mean(store_speeds)
     rainfall = rain_count * BUCKET_SIZE
