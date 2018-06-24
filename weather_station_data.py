@@ -3,10 +3,10 @@
 from gpiozero import Button
 import time
 import math
-import sensors/bme280_sensor
-import wind_direction_byo
+import bme280_sensor
+import wind_direction
 import statistics
-import sensors/ds18b20_therm
+import ds18b20_therm
 
 CM_IN_A_KM = 100000.0
 SECS_IN_AN_HOUR = 3600
