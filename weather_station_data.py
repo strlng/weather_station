@@ -3,10 +3,10 @@
 from gpiozero import Button
 import time
 import math
-import bme280_sensor
+import sensors/bme280_sensor
 import wind_direction_byo
 import statistics
-import ds18b20_therm
+import sensors/ds18b20_therm
 
 CM_IN_A_KM = 100000.0
 SECS_IN_AN_HOUR = 3600
@@ -36,7 +36,7 @@ def calculate_speed(time_sec):
 
     km_per_sec = dist_km / time_sec
     km_per_hour = km_per_sec * SECS_IN_AN_HOUR
-    
+
     return km_per_hour * ADJUSTMENT
 
 def reset_wind():
