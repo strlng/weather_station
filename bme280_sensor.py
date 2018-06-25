@@ -20,3 +20,14 @@ def read_all():
     #print(humidity, pressure, ambient_temperature)
     #sleep(1)
 
+def read_humidity():
+    bme280_data = bme280.sample(bus,address)
+    return bme280_data.humidity
+
+def read_pressure():
+    bme280_data = bme280.sample(bus,address)
+    return bme280_data.pressure
+
+def read_ambient_temperature():
+    bme280_data = bme280.sample(bus,address)
+    return bme280_data.ambient_temperature
