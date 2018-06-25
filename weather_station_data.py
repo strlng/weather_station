@@ -3,10 +3,10 @@
 from gpiozero import Button
 import time
 import math
-import bme280_sensor
+#import bme280_sensor
 import wind_direction
 import statistics
-import ds18b20_therm
+#import ds18b20_therm
 
 CM_IN_A_KM = 100000.0
 SECS_IN_AN_HOUR = 3600
@@ -68,6 +68,7 @@ def direction(wind_average):
     elif wind_average <= 360.0:
         direction = "West"
     return direction
+
 while True:
     start_time = time.time()
     while time.time() - start_time <= interval:
@@ -83,13 +84,13 @@ while True:
     wind_speed = statistics.mean(store_speeds)
     rainfall = rain_count * BUCKET_SIZE
     reset_rainfall()
-    humidity, pressure, ambient_temp = bme280_sensor.read_all()
+    #humidity, pressure, ambient_temp = bme280_sensor.read_all()
     print("wind speed: " + str(wind_speed))
     print("wind gust: " + str(wind_gust))
     print("rainfall: " + str(rainfall))
     print("wind direction: " + str(direction(wind_average)))
-    print("humidity: " + str(humidity)),
-    print("pressure: " + str(pressure)),
-    print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
+    #print("humidity: " + str(humidity)),
+    #print("pressure: " + str(pressure)),
+    #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
     store_speeds = []
     store_directions = []
