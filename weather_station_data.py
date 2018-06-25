@@ -6,6 +6,7 @@ import math
 #import bme280_sensor
 import wind_direction
 import statistics
+import database
 #import ds18b20_therm
 
 CM_IN_A_KM = 100000.0
@@ -69,6 +70,8 @@ def direction(wind_average):
         direction = "West"
     return direction
 
+db = database.weather_database()
+
 while True:
     start_time = time.time()
     while time.time() - start_time <= interval:
@@ -92,5 +95,9 @@ while True:
     #print("humidity: " + str(humidity)),
     #print("pressure: " + str(pressure)),
     #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
+    humidity=0
+    pressure=0
+    ambient_temp=0
+    db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
     store_speeds = []
     store_directions = []
