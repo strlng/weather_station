@@ -8,6 +8,7 @@ import wind_direction
 import statistics
 #import database
 #import ds18b20_therm
+import wu_upload
 
 CM_IN_A_KM = 100000.0
 SECS_IN_AN_HOUR = 3600
@@ -87,6 +88,10 @@ while True:
     wind_speed = statistics.mean(store_speeds)
     rainfall = rain_count * BUCKET_SIZE
     reset_rainfall()
+    humidity = 0
+    pressure = 0
+    ambient_temp = 0
+    ground_temp = 0
     #humidity, pressure, ambient_temp = bme280_sensor.read_all()
     print("wind speed: " + str(wind_speed))
     print("wind gust: " + str(wind_gust))
@@ -99,5 +104,6 @@ while True:
     pressure=0
     ambient_temp=0
 #    db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
+    wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall):
     store_speeds = []
     store_directions = []
