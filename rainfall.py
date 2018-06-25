@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from gpiozero import Button
+from signal import pause
 
 rain_sensor = Button(6)
 BUCKET_SIZE = 0.2794
