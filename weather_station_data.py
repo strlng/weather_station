@@ -7,6 +7,7 @@ import math
 import wind_direction
 import statistics
 import database
+import decimal
 #import ds18b20_therm
 import wu_upload
 
@@ -83,10 +84,10 @@ while True:
 
         final_speed = calculate_speed(wind_interval)
         store_speeds.append(final_speed)
-    wind_average = wind_direction.get_average(store_directions)
-    wind_gust = max(store_speeds)
-    wind_speed = statistics.mean(store_speeds)
-    rainfall = rain_count * BUCKET_SIZE
+    wind_average = round(wind_direction.get_average(store_directions),2)
+    wind_gust = round(max(store_speeds),2)
+    wind_speed = round(statistics.mean(store_speeds),2)
+    rainfall = round((rain_count * BUCKET_SIZE),2)
     reset_rainfall()
     humidity = 0
     pressure = 0
