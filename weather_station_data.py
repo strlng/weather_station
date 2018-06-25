@@ -84,10 +84,10 @@ while True:
 
         final_speed = calculate_speed(wind_interval)
         store_speeds.append(final_speed)
-    wind_average = round(wind_direction.get_average(store_directions),2)
-    wind_gust = round(max(store_speeds),2)
-    wind_speed = round(statistics.mean(store_speeds),2)
-    rainfall = round((rain_count * BUCKET_SIZE),2)
+    wind_average = wind_direction.get_average(store_directions)
+    wind_gust = max(store_speeds)
+    wind_speed = statistics.mean(store_speeds)
+    rainfall = rain_count * BUCKET_SIZE
     reset_rainfall()
     humidity = 0
     pressure = 0
@@ -104,7 +104,7 @@ while True:
     humidity=0
     pressure=0
     ambient_temp=0
-    db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
+    db.insert(ambient_temp, ground_temp, 0, pressure, humidity, round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
     wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall)
     store_speeds = []
     store_directions = []
