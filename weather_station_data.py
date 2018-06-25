@@ -104,6 +104,6 @@ while True:
     pressure=0
     ambient_temp=0
 #    db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
-    wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall):
+    wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall)
     store_speeds = []
     store_directions = []
