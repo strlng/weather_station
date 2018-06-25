@@ -61,5 +61,5 @@ def get_average(angles):
 
     return 0.0 if average == 360 else average
 
-while True:
-    print(get_value())
+#while True:
+#    print(get_value())
