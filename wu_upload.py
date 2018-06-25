@@ -56,4 +56,3 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
         action_str)
 
     print("Received " + str(r.status_code) + " " + str(r.text))
-}
