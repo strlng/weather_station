@@ -35,6 +35,7 @@ class weather_database:
         self.insert_template = "INSERT INTO WEATHER_MEASUREMENT (AMBIENT_TEMPERATURE, GROUND_TEMPERATURE, AIR_QUALITY, AIR_PRESSURE, HUMIDITY, WIND_DIRECTION, WIND_SPEED, WIND_GUST_SPEED, RAINFALL, CREATED) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
         self.update_template =  "UPDATE WEATHER_MEASUREMENT SET REMOTE_ID=%s WHERE ID=%s;"
         self.upload_select_template = "SELECT * FROM WEATHER_MEASUREMENT WHERE REMOTE_ID IS NULL;"
+        self.last_hour_rainfall_template = "SELECT SUM(RAINFALL) FROM WEATHER_MEASUREMENT WHERE CREATED >= DATE_SUB(now(), INTERVAL 1 HOUR);"
 
     def is_number(self, s):
         try:
@@ -59,3 +60,8 @@ class weather_database:
             created )
         print(self.insert_template % params)
         self.db.execute(self.insert_template, params)
+
+    def select_rain_last_hour():
+        self.db.execute(self.last_hour_rainfall_template)
+        data=self.cursor.fetchall()
+        print(data)
