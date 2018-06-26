@@ -57,5 +57,18 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
         "&winddir=" + wind_average_str +
         action_str)
 
-    print(r)
+    print(
+        WUurl +
+        WUcreds +
+        date_str +
+        #"&humidity=" + humidity_str +
+        #"&baromin=" + pressure_str +
+        "&windspeedmph=" + wind_speed_mph_str +
+        "&windgustmph=" + wind_gust_mph_str +
+        #"&tempf=" + ambient_temp_str +
+        "&rainin=" + rainfall_in_str +
+        "&dailyrainin=" + daily_rainfall_in_str +
+        #"&soiltempf=" + ground_temp_str +
+        "&winddir=" + wind_average_str +
+        action_str)
     print("Received " + str(r.status_code) + " " + str(r.text))
