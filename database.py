@@ -36,6 +36,7 @@ class weather_database:
         self.update_template =  "UPDATE WEATHER_MEASUREMENT SET REMOTE_ID=%s WHERE ID=%s;"
         self.upload_select_template = "SELECT * FROM WEATHER_MEASUREMENT WHERE REMOTE_ID IS NULL;"
         self.last_hour_rainfall_template = "SELECT SUM(RAINFALL) FROM WEATHER_MEASUREMENT WHERE CREATED >= DATE_SUB(now(), INTERVAL 1 HOUR);"
+        self.rain_today_template = "SELECT SUM(RAINFALL) FROM WEATHER_MEASUREMENT WHERE DATE(CREATED) = CURDATE();"
 
     def is_number(self, s):
         try:
@@ -63,6 +64,8 @@ class weather_database:
 
     def select_rain_last_hour(self):
         data=self.db.query(self.last_hour_rainfall_template)
-        print("**")
-        print(data[0]['SUM(RAINFALL)'])
-        print("**")
+        return data[0]['SUM(RAINFALL)']
+
+    def select_rain_today(self):
+        data=self.db.query(self.rain_today_template)
+        return data[0]['SUM(RAINFALL)']
