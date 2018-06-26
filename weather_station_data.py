@@ -94,10 +94,10 @@ while True:
     ambient_temp = 0
     ground_temp = 0
     #humidity, pressure, ambient_temp = bme280_sensor.read_all()
-    print("wind speed: " + str(wind_speed))
-    print("wind gust: " + str(wind_gust))
-    print("rainfall: " + str(rainfall))
-    print("wind direction: " + str(direction(wind_average)))
+    #print("wind speed: " + str(wind_speed))
+    #print("wind gust: " + str(wind_gust))
+    #print("rainfall: " + str(rainfall))
+    #print("wind direction: " + str(direction(wind_average)))
     #print("humidity: " + str(humidity)),
     #print("pressure: " + str(pressure)),
     #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
