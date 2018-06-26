@@ -61,7 +61,7 @@ class weather_database:
         print(self.insert_template % params)
         self.db.execute(self.insert_template, params)
 
-    def select_rain_last_hour():
+    def select_rain_last_hour(self):
         data=self.query(self.last_hour_rainfall_template)
         for row in data:
             print("**")
