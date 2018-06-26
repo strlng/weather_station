@@ -16,7 +16,7 @@ SECS_IN_AN_HOUR = 3600
 ADJUSTMENT = 1.18
 BUCKET_SIZE = 0.2794
 
-interval = 60
+interval = 30
 radius_cm = 9.0
 wind_interval = 5
 wind_count = 0
