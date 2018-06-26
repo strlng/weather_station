@@ -19,7 +19,7 @@ def hpa_to_inches(pressure_in_hpa):
     return pressure_in_inches_of_m
 
 def mm_to_inches(rainfall_in_mm):
-    rainfall_in_inches = rainfall_in_mm * 0.0393701
+    rainfall_in_inches = float(rainfall_in_mm) * 0.0393701
     return rainfall_in_inches
 
 def degc_to_degf(temperature_in_c):
