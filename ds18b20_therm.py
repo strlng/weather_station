@@ -39,7 +39,3 @@ class DS18B20(object):
                 temp_c = float(temp_string)/1000.0
 
         return temp_c
-
-if __name__ == "__main__":
-    obj = DS18B20()
-    print("Temp: %s C" % obj.read_temp())
