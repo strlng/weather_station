@@ -101,9 +101,7 @@ while True:
     #print("humidity: " + str(humidity)),
     #print("pressure: " + str(pressure)),
     #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
-    humidity=0
-    pressure=0
-    ambient_temp=0
+    
     db.insert(ambient_temp, ground_temp, 0, pressure, humidity, round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
     rainfall = db.select_rain_last_hour()
     daily_rainfall = db.select_rain_today()
