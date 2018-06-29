@@ -32,10 +32,10 @@ def kmh_to_mph(speed_in_kmh):
 
 def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall, daily_rainfall):
 
-    #ambient_temp_str = "{0:.2f}".format(degc_to_degf(ambient_temp))
-    #ground_temp_str = "{0:.2f}".format(degc_to_degf(ground_temp))
-    #humidity_str = "{0:.2f}".format(humidity)
-    #pressure_str = "{0:.2f}".format(hpa_to_inches(pressure))
+    ambient_temp_str = "{0:.2f}".format(degc_to_degf(ambient_temp))
+    ground_temp_str = "{0:.2f}".format(degc_to_degf(ground_temp))
+    humidity_str = "{0:.2f}".format(humidity)
+    pressure_str = "{0:.2f}".format(hpa_to_inches(pressure))
     wind_speed_mph_str = "{0:.2f}".format(kmh_to_mph(wind_speed))
     wind_gust_mph_str = "{0:.2f}".format(kmh_to_mph(wind_gust))
     wind_average_str = str(wind_average)
@@ -46,14 +46,14 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
         WUurl +
         WUcreds +
         date_str +
-        #"&humidity=" + humidity_str +
-        #"&baromin=" + pressure_str +
+        "&humidity=" + humidity_str +
+        "&baromin=" + pressure_str +
         "&windspeedmph=" + wind_speed_mph_str +
         "&windgustmph=" + wind_gust_mph_str +
-        #"&tempf=" + ambient_temp_str +
+        "&tempf=" + ambient_temp_str +
         "&rainin=" + rainfall_in_str +
         "&dailyrainin=" + daily_rainfall_in_str +
-        #"&soiltempf=" + ground_temp_str +
+        "&soiltempf=" + ground_temp_str +
         "&winddir=" + wind_average_str +
         action_str)
 
@@ -61,14 +61,14 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
         WUurl +
         WUcreds +
         date_str +
-        #"&humidity=" + humidity_str +
-        #"&baromin=" + pressure_str +
+        "&humidity=" + humidity_str +
+        "&baromin=" + pressure_str +
         "&windspeedmph=" + wind_speed_mph_str +
         "&windgustmph=" + wind_gust_mph_str +
-        #"&tempf=" + ambient_temp_str +
+        "&tempf=" + ambient_temp_str +
         "&rainin=" + rainfall_in_str +
         "&dailyrainin=" + daily_rainfall_in_str +
-        #"&soiltempf=" + ground_temp_str +
+        "&soiltempf=" + ground_temp_str +
         "&winddir=" + wind_average_str +
         action_str)
     print("Received " + str(r.status_code) + " " + str(r.text))

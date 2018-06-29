@@ -3,12 +3,12 @@
 from gpiozero import Button
 import time
 import math
-#import bme280_sensor
+import bme280_sensor
 import wind_direction
 import statistics
 import database
 import decimal
-#import ds18b20_therm
+import ds18b20_therm
 import wu_upload
 
 CM_IN_A_KM = 100000.0
@@ -93,7 +93,7 @@ while True:
     pressure = 0
     ambient_temp = 0
     ground_temp = 0
-    #humidity, pressure, ambient_temp = bme280_sensor.read_all()
+    humidity, pressure, ambient_temp = bme280_sensor.read_all()
     #print("wind speed: " + str(wind_speed))
     #print("wind gust: " + str(wind_gust))
     #print("rainfall: " + str(rainfall))
