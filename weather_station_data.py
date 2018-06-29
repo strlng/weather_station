@@ -94,6 +94,8 @@ while True:
     ambient_temp = 0
     ground_temp = 0
     humidity, pressure, ambient_temp = bme280_sensor.read_all()
+    ds18b20 = ds18b20_therm.DS18B20()
+    ground_temp = ds18b20.read_temp()
     #print("wind speed: " + str(wind_speed))
     #print("wind gust: " + str(wind_gust))
     #print("rainfall: " + str(rainfall))
@@ -101,7 +103,7 @@ while True:
     #print("humidity: " + str(humidity)),
     #print("pressure: " + str(pressure)),
     #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
-    
+
     db.insert(ambient_temp, ground_temp, 0, pressure, humidity, round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
     rainfall = db.select_rain_last_hour()
     daily_rainfall = db.select_rain_today()
