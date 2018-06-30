@@ -103,7 +103,7 @@ ground_temp = ds18b20.read_temp()
 #print("pressure: " + str(pressure)),
 #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
 
-db.insert(ambient_temp, ground_temp, 0, pressure, humidity, round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
+db.insert(round(ambient_temp,2), round(ground_temp,2), 0, round(pressure,2), round(humidity,2), round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
 rainfall = db.select_rain_last_hour()
 daily_rainfall = db.select_rain_today()
 wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall, daily_rainfall)
