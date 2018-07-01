@@ -10,6 +10,7 @@ import database
 import decimal
 import ds18b20_therm
 import wu_upload
+import weather_math
 
 ADJUSTMENT = 1.18
 BUCKET_SIZE = 0.2794
@@ -95,6 +96,7 @@ ground_temp = 0
 humidity, pressure, ambient_temp = bme280_sensor.read_all()
 ds18b20 = ds18b20_therm.DS18B20()
 ground_temp = ds18b20.read_temp()
+dew_point = weather_math.get_dew_point_c(ambient_temp, humidity)
 #print("wind speed: " + str(wind_speed))
 #print("wind gust: " + str(wind_gust))
 #print("rainfall: " + str(rainfall))
@@ -106,6 +108,6 @@ ground_temp = ds18b20.read_temp()
 db.insert(round(ambient_temp,2), round(ground_temp,2), 0, round(pressure,2), round(humidity,2), round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
 rainfall = db.select_rain_last_hour()
 daily_rainfall = db.select_rain_today()
-wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall, daily_rainfall)
+wu_upload.upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall, daily_rainfall, dew_point)
 store_speeds = []
 store_directions = []

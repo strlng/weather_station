@@ -30,7 +30,7 @@ def kmh_to_mph(speed_in_kmh):
     speed_in_mph = speed_in_kmh * 0.621371
     return speed_in_mph
 
-def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall, daily_rainfall):
+def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_speed, wind_gust, wind_average, rainfall, daily_rainfall, dew_point):
 
     ambient_temp_str = "{0:.2f}".format(degc_to_degf(ambient_temp))
     ground_temp_str = "{0:.2f}".format(degc_to_degf(ground_temp))
@@ -41,6 +41,7 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
     wind_average_str = str(wind_average)
     rainfall_in_str = "{0:.2f}".format(mm_to_inches(rainfall))
     daily_rainfall_in_str = "{0:.2f}".format(mm_to_inches(daily_rainfall))
+    dew_point_str = "{0:.2f}".format(degc_to_degf(dew_point))
 
     r= requests.get(
         WUurl +
@@ -70,5 +71,6 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
         "&dailyrainin=" + daily_rainfall_in_str +
         "&soiltempf=" + ground_temp_str +
         "&winddir=" + wind_average_str +
+        "&dewptf=" + dew_point_str +
         action_str)
     print("Received " + str(r.status_code) + " " + str(r.text))
