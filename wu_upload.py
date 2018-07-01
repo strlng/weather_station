@@ -56,6 +56,7 @@ def upload_weather_data(humidity, ambient_temp, pressure, ground_temp, wind_spee
         "&dailyrainin=" + daily_rainfall_in_str +
         "&soiltempf=" + ground_temp_str +
         "&winddir=" + wind_average_str +
+        "&dewptf=" + dew_point_str +
         action_str)
 
     print(
