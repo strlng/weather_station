@@ -4,6 +4,7 @@ import requests
 import time
 import math
 import statistics
+import weather_math
 
 # create a string to hold the first part of the URL
 WUurl = "https://weatherstation.wunderground.com/weatherstation/updateweatherstation.php?"
