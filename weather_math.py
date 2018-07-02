@@ -1,5 +1,21 @@
 import math
 
+# conversion functions
+def hpa_to_inches(pressure_in_hpa):
+    pressure_in_inches_of_m = pressure_in_hpa * 0.02953
+    return pressure_in_inches_of_m
+
+def mm_to_inches(rainfall_in_mm):
+    rainfall_in_inches = float(rainfall_in_mm) * 0.0393701
+    return rainfall_in_inches
+
+def degc_to_degf(temperature_in_c):
+    temperature_in_f = (temperature_in_c * (9/5.0)) + 32
+    return temperature_in_f
+
+def kmh_to_mph(speed_in_kmh):
+    speed_in_mph = speed_in_kmh * 0.621371
+    return speed_in_mph
 
 def get_frost_point_c(t_air_c, dew_point_c):
     """Compute the frost point in degrees Celsius
