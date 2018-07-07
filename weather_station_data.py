@@ -97,8 +97,10 @@ dew_point = weather_math.get_dew_point_c(ambient_temp, humidity)
 fan = OutputDevice(13)
 if ambient_temp > 20:
     fan.on()
-else
+    print("Turning fan on")
+else:
     fan.off()
+    print("Turning fan off")
 
 db.insert(round(ambient_temp,2), round(ground_temp,2), 0, round(pressure,2), round(humidity,2), round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
 rainfall = db.select_rain_last_hour()
