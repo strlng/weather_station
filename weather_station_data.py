@@ -95,7 +95,7 @@ dew_point = weather_math.get_dew_point_c(ambient_temp, humidity)
 #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
 
 fan = OutputDevice(13)
-if ambient_temp > 20:
+if ambient_temp > 32:
     fan.on()
     print("Turning fan on")
 else:
