@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from gpiozero import Button
+from gpiozero import OutputDevice
 import time
 import math
 import bme280_sensor
@@ -60,18 +61,6 @@ rain_sensor.when_pressed = bucket_tipped
 wind_speed_sensor = Button(5)
 wind_speed_sensor.when_pressed = spin
 
-def direction(wind_average):
-    direction = "Null"
-    if wind_average <= 89.9:
-        direction = "North"
-    elif wind_average <= 179.9:
-        direction = "East"
-    elif wind_average <= 269.9:
-        direction = "South"
-    elif wind_average <= 360.0:
-        direction = "West"
-    return direction
-
 db = database.weather_database()
 
 #while True:
@@ -104,6 +93,12 @@ dew_point = weather_math.get_dew_point_c(ambient_temp, humidity)
 #print("humidity: " + str(humidity)),
 #print("pressure: " + str(pressure)),
 #print("ambient_temp: " + str((ambient_temp * (9.0/5.0)) + 32.0 ))
+
+fan = OutputDevice(13)
+if ambient_temp > 20:
+    fan.on()
+else
+    fan.off()
 
 db.insert(round(ambient_temp,2), round(ground_temp,2), 0, round(pressure,2), round(humidity,2), round(wind_average,2), round(wind_speed,2), round(wind_gust,2), round(rainfall,2))
 rainfall = db.select_rain_last_hour()
